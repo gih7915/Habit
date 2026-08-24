@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Habit | Estudos</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="studies-page">
+	<div class="layout">
+		<aside class="sidebar" id="sidebar">
+			<a class="logo" href="index.html"><span>z</span><strong>Habit</strong></a>
+			<nav class="nav" aria-label="Navegação">
+				<a href="index.html"><b>⌂</b> Início</a>
+				<a href="humor.html"><b>🙂</b> Humor</a>
+				<a href="habitos.html"><b>✦</b> Hábitos</a>
+				<a href="tarefas.html"><b>✓</b> Tarefas</a>
+				<a class="active" href="estudos.html"><b>▧</b> Estudos</a>
+				<a href="dieta.html"><b>♧</b> Dieta</a>
+				<a href="treinos.html"><b>🏋️</b> Treinos</a>
+				<a href="#financas"><b>▤</b> Finanças</a>
+				<a href="pomodoro.html"><b>◷</b> Pomodoro</a>
+			</nav>
+			<div class="sidebar-footer">
+				<a href="#notificacoes"><b>♧</b> Notificações</a>
+				<div class="streak"><span>♨</span><div><strong>0 dias de ofensiva</strong><small>Comece hoje</small></div></div>
+				<a class="account" href="perfil.html"><span class="avatar">M</span><span><strong>Meu Perfil</strong><small>Ver conta</small></span><b>›</b></a>
+			</div>
+		</aside>
+
+		<main class="main">
+			<header class="header">
+				<button class="menu" id="menu" aria-label="Abrir menu">☰</button>
+				<h1>Estudos</h1>
+			</header>
+
+			<section class="study-overview">
+				<div>
+					<p class="modal-kicker">Seu plano de aprendizado</p>
+					<h2>Aprender também é um processo.</h2>
+					<p>Defina foco, escolha tópicos e mantenha seu ciclo de revisão ativo.</p>
+				</div>
+				<div class="semester-stats">
+					<div><strong id="subjectCount">0</strong><span>matérias</span></div>
+					<div><strong id="averageGrade">--</strong><span>com revisão</span></div>
+					<div><strong id="attendanceRate">--</strong><span>presença</span></div>
+				</div>
+			</section>
+
+			<div class="study-toolbar">
+				<div class="study-tabs">
+					<button class="selected" data-filter="all">Todos os conteúdos</button>
+					<button data-filter="attention">Precisam de atenção</button>
+					<button data-filter="good">Em dia</button>
+				</div>
+				<span id="semesterLabel">Plano ativo</span>
+			</div>
+
+			<section class="timetable card" id="timetable"></section>
+
+			<section class="discipline-board" id="subjectsGrid"></section>
+
+			<section class="review-board card" id="reviewBoard">
+				<div class="section-title">
+					<div>
+						<p class="modal-kicker">Revisão espaçada</p>
+						<h2>Sua fila de revisões</h2>
+					</div>
+				</div>
+				<div class="review-columns">
+					<article>
+						<h3>Pendentes <span id="pendingCount">0</span></h3>
+						<div id="reviewPending" class="review-list"></div>
+					</article>
+					<article>
+						<h3>Atrasadas <span id="overdueCount">0</span></h3>
+						<div id="reviewOverdue" class="review-list"></div>
+					</article>
+					<article>
+						<h3>Concluídas <span id="doneCount">0</span></h3>
+						<div id="reviewDone" class="review-list"></div>
+					</article>
+				</div>
+			</section>
+
+			<section class="review-calendar card">
+				<div class="calendar-heading">
+					<button id="reviewPrevMonth" aria-label="Mês anterior">‹</button>
+					<div>
+						<p class="modal-kicker">Calendário de revisão</p>
+						<h2 id="reviewCalendarTitle"></h2>
+					</div>
+					<button id="reviewNextMonth" aria-label="Próximo mês">›</button>
+				</div>
+				<div class="weekdays"><span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div>
+				<div class="calendar-grid" id="reviewCalendarGrid"></div>
+				<p class="calendar-legend"><i class="legend-study"></i> Dia estudado <i class="legend-review"></i> Dia de revisão</p>
+			</section>
+		</main>
+	</div>
+
+	<div class="modal-backdrop" id="disciplineModal">
+		<form class="subject-modal" id="disciplineForm">
+			<div class="modal-heading">
+				<div>
+					<p class="modal-kicker">Seu semestre</p>
+					<h2 id="disciplineModalTitle">Adicionar disciplina</h2>
+				</div>
+				<button type="button" class="modal-close" id="closeDiscipline" aria-label="Fechar">×</button>
+			</div>
+			<p>Adicione uma disciplina dentro de um objetivo.</p>
+
+			<label for="disciplineObjective">Objetivo</label>
+			<select id="disciplineObjective"></select>
+
+			<label for="disciplineName">Nome da disciplina</label>
+			<input id="disciplineName" required placeholder="Ex.: Direito Constitucional">
+
+			<label for="disciplineDescription">Descrição (opcional)</label>
+			<input id="disciplineDescription" placeholder="Ex.: Turma A - 2026.2">
+
+			<div id="disciplineAbsenceField">
+				<label for="disciplineAbsenceLimit">Limite de faltas (apenas escola/faculdade)</label>
+				<input id="disciplineAbsenceLimit" type="number" min="1" value="10">
+			</div>
+
+			<div id="disciplineScheduleField">
+				<label>Horários semanais</label>
+				<div id="disciplineScheduleEntries"></div>
+				<button type="button" class="add-schedule-entry" id="addScheduleEntry">＋ Adicionar outro horário</button>
+			</div>
+
+			<div class="subject-modal-actions">
+				<button type="button" id="cancelDiscipline">Cancelar</button>
+				<button type="submit" id="saveDiscipline">Adicionar disciplina</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal-backdrop" id="absenceModal">
+		<form class="subject-modal" id="absenceForm">
+			<div class="modal-heading">
+				<div><p class="modal-kicker">Faltas</p><h2 id="absenceModalTitle">Registrar falta</h2></div>
+				<button type="button" class="modal-close" id="closeAbsence" aria-label="Fechar">×</button>
+			</div>
+			<p id="absenceDisciplineName"></p>
+			<input type="hidden" id="absenceDisciplineId">
+			<div id="absenceDateField"><label for="absenceDate">Em qual dia você faltou?</label><input id="absenceDate" type="date" required></div>
+			<div id="absenceRemovalField"><label for="absenceRemovalDate">Qual falta deseja remover?</label><select id="absenceRemovalDate"></select></div>
+			<div class="subject-modal-actions">
+				<button type="button" id="cancelAbsence">Cancelar</button>
+				<button type="submit" id="saveAbsence">Registrar falta</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal-backdrop" id="assessmentModal">
+		<form class="subject-modal" id="assessmentForm">
+			<div class="modal-heading">
+				<div><p class="modal-kicker">Avaliações</p><h2>Adicionar avaliação</h2></div>
+				<button type="button" class="modal-close" id="closeAssessment" aria-label="Fechar">×</button>
+			</div>
+			<input type="hidden" id="assessmentDisciplineId">
+			<label for="assessmentName">Nome da avaliação</label>
+			<input id="assessmentName" required placeholder="Ex.: Prova bimestral">
+			<label for="assessmentDate">Data</label>
+			<input id="assessmentDate" type="date" required>
+			<div class="subject-modal-actions">
+				<button type="button" id="cancelAssessment">Cancelar</button>
+				<button type="submit">Adicionar avaliação</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal-backdrop" id="subjectModal">
+		<form class="subject-modal" id="subjectForm">
+			<div class="modal-heading">
+				<div>
+					<p class="modal-kicker">Seu semestre</p>
+					<h2>Adicionar conteúdo</h2>
+				</div>
+				<button type="button" class="modal-close" id="closeSubject" aria-label="Fechar">×</button>
+			</div>
+			<p>Cadastre um conteúdo dentro de uma disciplina.</p>
+
+			<label for="subjectObjective">Objetivo</label>
+			<select id="subjectObjective"></select>
+
+			<label for="subjectDiscipline">Disciplina</label>
+			<select id="subjectDiscipline"></select>
+
+			<label for="subjectName">Nome do conteúdo</label>
+			<input id="subjectName" required placeholder="Ex.: Controle de constitucionalidade">
+
+			<label for="subjectReviewEnabled">Deseja revisar esta matéria?</label>
+			<select id="subjectReviewEnabled">
+				<option value="yes">Sim, quero revisar</option>
+				<option value="no">Não agora</option>
+			</select>
+
+			<div id="subjectReviewPlanField">
+				<label for="subjectReviewPlanMode">Plano de revisão</label>
+				<select id="subjectReviewPlanMode">
+					<option value="recommended">Recomendado (1, 7 e 30 dias)</option>
+					<option value="custom">Personalizado</option>
+				</select>
+
+				<div id="subjectCustomReviewConfig">
+					<label for="subjectReviewCount">Quantas revisões?</label>
+					<input id="subjectReviewCount" type="number" min="1" max="8" value="3">
+
+					<label for="subjectReviewDays">Dias para revisar (separados por vírgula)</label>
+					<input id="subjectReviewDays" placeholder="Ex.: 1, 3, 10" value="1, 7, 30">
+					<small>Exemplo: 1, 7, 30 cria 3 revisões nesses dias após estudar.</small>
+				</div>
+			</div>
+
+			<label for="subjectLevel">Nível da matéria</label>
+			<select id="subjectLevel">
+				<option value="facil">Fácil</option>
+				<option value="medio" selected>Médio</option>
+				<option value="dificil">Difícil</option>
+			</select>
+
+			<div id="subjectReviewTimeField">
+				<label for="subjectReviewMinutes">Tempo de revisão sugerido (min)</label>
+				<input id="subjectReviewMinutes" type="number" min="5" step="5" value="45">
+				<small id="subjectReviewHint">Recomendação: Fácil 30 min, Médio 45 min, Difícil 60 min.</small>
+			</div>
+
+			<div class="subject-modal-actions">
+				<button type="button" id="cancelSubject">Cancelar</button>
+				<button type="submit">Adicionar conteúdo</button>
+			</div>
+		</form>
+	</div>
+
+	<script src="../js/estudos.js"></script>
+</body>
+</html>

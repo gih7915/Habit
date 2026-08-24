@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habit | Treinos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .training-page .sidebar{background:var(--side)!important;border-right:1px solid var(--line)!important;color:var(--ink)!important}
+    .training-page .logo{color:var(--ink)!important}
+    .training-page .logo span{background:var(--wine)!important;color:#fff!important}
+    .training-page .nav a,.training-page .sidebar-footer>a{color:#876f64!important}
+    .training-page .nav a:hover,.training-page .nav a.active,.training-page .sidebar-footer>a:hover{background:var(--panel)!important;color:var(--ink)!important}
+    .training-page .sidebar-footer{border-color:#e3d9ce!important}
+    .training-page .streak{background:#eee7de!important;color:var(--muted)!important}
+    .training-page .avatar{background:#c89477!important}
+  </style>
+</head>
+<body class="training-page">
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a class="logo" href="index.html"><span>z</span><strong>Habit</strong></a>
+    <nav class="nav" aria-label="Navegação">
+      <a href="index.html"><b>⌂</b> Início</a><a href="humor.html"><b>🙂</b> Humor</a><a href="habitos.html"><b>✦</b> Hábitos</a><a href="tarefas.html"><b>✓</b> Tarefas</a><a href="estudos.html"><b>▧</b> Estudos</a><a href="dieta.html"><b>♧</b> Dieta</a><a class="active" href="treinos.html"><b>🏋️</b> Treinos</a><a href="#financas"><b>▤</b> Finanças</a><a href="pomodoro.html"><b>◷</b> Pomodoro</a>
+    </nav>
+    <div class="sidebar-footer"><a href="#notificacoes"><b>♧</b> Notificações</a><div class="streak"><span>♨</span><div><strong id="sidebarStreak">0 DIAS DE OFENSIVA</strong><small>Continue assim</small></div></div><a class="account" href="perfil.html"><span class="avatar">M</span><span><strong>Meu Perfil</strong><small>Ver conta</small></span><b>›</b></a></div>
+  </aside>
+  <main class="main">
+    <header class="header"><button class="menu" id="menu" aria-label="Abrir menu">☰</button><h1>Treinos</h1></header>
+    <section class="workout-empty" id="emptyState"><div class="workout-icon">♮</div><h2>Nenhum treino encontrado</h2><p>Crie seu primeiro treino personalizado.</p><button class="create-workout" id="createWorkout"><span>＋</span> Criar meu treino</button></section>
+    <section class="workout-collection" id="workoutCollection"><div class="collection-heading"><div><p class="modal-kicker">Minha rotina</p><h2>Meus treinos</h2></div><button class="new-workout" id="newWorkout">＋ Novo treino</button></div><div class="workout-cards" id="workoutCards"></div></section>
+    <section class="active-workout" id="activeWorkout"><div class="active-heading"><div><p class="modal-kicker">Em andamento</p><h2 id="activeWorkoutName"></h2></div><div><span class="active-progress" id="activeProgress">0/0 séries</span><button class="finish-workout" id="finishWorkout">Finalizar</button></div></div><div class="active-exercises" id="activeExercises"></div><button class="cancel-active" id="cancelActive">Cancelar treino</button></section>
+    <section class="training-history" id="trainingHistory"><div class="history-summary"><div><p class="modal-kicker">Seu ritmo</p><h2>Dias de ofensiva</h2><strong id="streakCount">0</strong><span>dias seguidos</span></div><div class="history-total"><strong id="trainedCount">0</strong><span>dias treinados</span></div></div><div class="calendar-card"><div class="calendar-heading"><button id="previousMonth" aria-label="Mês anterior">‹</button><h2 id="calendarTitle"></h2><button id="nextMonth" aria-label="Próximo mês">›</button></div><div class="weekdays"><span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div><div class="calendar-grid" id="calendarGrid"></div><p class="calendar-legend"><i></i> Treino concluído</p></div></section>
+  </main>
+</div>
+<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><form class="workout-modal" id="workoutForm"><div class="modal-heading"><div><p class="modal-kicker">Novo treino</p><h2 id="modalTitle">Criar meu treino</h2></div><button type="button" class="modal-close" id="closeModal" aria-label="Fechar">×</button></div><p>Monte uma rotina que combine com o seu ritmo.</p><div class="workout-form"><label for="workoutName">Nome do treino</label><input id="workoutName" required placeholder="Ex.: Treino A - Pernas"><div class="exercise-heading"><label>Exercícios</label><button type="button" id="addExercise">＋ Adicionar exercício</button></div><div id="exerciseList"><div class="exercise-item"><div class="exercise-top"><input class="exercise-name" required placeholder="Nome do exercício"><button type="button" class="remove-exercise" aria-label="Remover exercício">×</button></div><div class="series-list"><div class="series-row"><select class="exercise-type" aria-label="Tipo de série"><option>Aquec.</option><option selected>Normal</option><option>Falha</option><option>Drop set</option></select><input class="exercise-kg" type="number" min="0" placeholder="kg" aria-label="Carga em kg"><input class="exercise-reps" type="number" min="1" value="10" placeholder="reps" aria-label="Repetições"><button type="button" class="remove-series" aria-label="Remover série">×</button></div></div><button type="button" class="add-series">＋ Adicionar série</button></div></div><div class="modal-actions"><button type="button" class="cancel" id="cancelModal">Cancelar</button><button class="submit" type="submit">Criar treino</button></div></form></div>
+<script src="../js/auth.js"></script><script src="../js/treinos.js"></script>
+</body>
+</html>

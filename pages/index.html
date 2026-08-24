@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fbfaf6">
+  <title>Habit | Início</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a class="logo" href="index.html"><span>z</span><strong>Habit</strong></a>
+    <nav class="nav" aria-label="Navegação">
+      <a class="active" href="index.html"><b>⌂</b> Início</a><a href="humor.html"><b>🙂</b> Humor</a><a href="habitos.html"><b>✦</b> Hábitos</a><a href="tarefas.html"><b>✓</b> Tarefas</a><a href="estudos.html"><b>▧</b> Estudos</a><a href="dieta.html"><b>♧</b> Dieta</a><a href="treinos.html"><b>🏋️</b> Treinos</a><a href="#financas"><b>▤</b> Finanças</a><a href="pomodoro.html"><b>◷</b> Pomodoro</a>
+    </nav>
+    <div class="sidebar-footer"><a href="#notificacoes"><b>♧</b> Notificações</a><div class="streak"><span>♨</span><div><strong>0 dias de ofensiva</strong><small>Comece hoje</small></div></div><a class="account" href="perfil.html"><span class="avatar">M</span><span><strong>Meu Perfil</strong><small>Ver conta</small></span><b>›</b></a></div>
+  </aside>
+  <main class="main">
+    <header class="header"><button class="menu" id="menu" aria-label="Abrir menu">☰</button><h1>Início</h1><div class="header-actions"><button class="points" aria-label="Pontos">0 <span>✦</span></button><a class="profile" href="perfil.html" aria-label="Perfil">M</a></div></header>
+    <div class="dashboard-grid">
+      <section class="left-column">
+        <div class="summary card"><div class="summary-icon">✦</div><div><strong>0</strong><p>Objetivos completos<br><span>Hoje</span></p></div><a href="#desafio">Desafio 21 dias <b>→</b></a></div>
+        <section class="mood card" id="humor"><h2>Como você está se sentindo hoje?</h2><div class="moods" role="radiogroup" aria-label="Selecione seu humor"><label><input type="radio" name="mood"><span>☀</span><small>Radiante</small></label><label><input type="radio" name="mood"><span>◒</span><small>Bem</small></label><label><input type="radio" name="mood" checked><span>●</span><small>Ok</small></label><label><input type="radio" name="mood"><span>◓</span><small>Mal</small></label><label><input type="radio" name="mood"><span>☾</span><small>Péssima</small></label></div><p class="hint">deslize para escolher outra emoção</p><label class="journal-label" for="journal">Que palavras descrevem seu estado interno agora?</label><textarea id="journal" placeholder="Escreva o que vier na sua mente."></textarea><button class="save" id="saveMood">Salvar humor</button><p class="saved" id="saved">Humor salvo.</p></section>
+        <section class="tasks card" id="tarefas"><div class="section-title"><h2>Tarefas para hoje</h2><a href="#tarefas">Ver tarefas <b>→</b></a></div><div class="empty"><span>✓</span><p>Nada planejado</p><button id="addTask">＋ Adicionar tarefa</button></div></section>
+      </section>
+      <section class="right-column">
+        <button class="water card" id="water"><div><p>Hidratação</p><h2>Definir meta de água</h2><small>Sugestão inicial: 3L</small></div><strong>⌁<span>--</span></strong><footer>♧ &nbsp; Configurar tracker</footer></button>
+        <section class="habits card" id="habitos"><div class="section-title"><h2>Hábitos</h2><a href="#habitos">Ver hábitos <b>→</b></a></div><div class="habit"><span class="habit-icon green">✣</span><h3>Alimentação limpa</h3><button class="habit-check">Marcar hábito</button></div><div class="habit"><span class="habit-icon peach">◉</span><h3>Treino intenso</h3><button class="habit-check">Marcar hábito</button></div><div class="habit"><span class="habit-icon yellow">☼</span><h3>Pausa real de telas à noite</h3><button class="habit-check">Marcar hábito</button></div></section>
+      </section>
+    </div>
+  </main>
+</div>
+<script src="../js/auth.js"></script><script src="../js/app.js"></script>
+</body>
+</html>

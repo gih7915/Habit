@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habit | Humor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="mood-page">
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <a class="logo" href="index.html"><span>z</span><strong>Habit</strong></a>
+    <nav class="nav" aria-label="Navegação">
+      <a href="index.html"><b>⌂</b> Início</a><a class="active" href="humor.html"><b>🙂</b> Humor</a><a href="habitos.html"><b>✦</b> Hábitos</a><a href="tarefas.html"><b>✓</b> Tarefas</a><a href="estudos.html"><b>▧</b> Estudos</a><a href="dieta.html"><b>♧</b> Dieta</a><a href="treinos.html"><b>🏋️</b> Treinos</a><a href="#financas"><b>▤</b> Finanças</a><a href="pomodoro.html"><b>◷</b> Pomodoro</a>
+    </nav>
+    <div class="sidebar-footer"><a href="#notificacoes"><b>♧</b> Notificações</a><div class="streak"><span>♨</span><div><strong>0 dias de ofensiva</strong><small>Comece hoje</small></div></div><a class="account" href="perfil.html"><span class="avatar">M</span><span><strong>Meu Perfil</strong><small>Ver conta</small></span><b>›</b></a></div>
+  </aside>
+  <main class="main">
+    <header class="header"><button class="menu" id="menu" aria-label="Abrir menu">☰</button><h1>Humor</h1></header>
+    <div class="mood-layout">
+      <section class="mood-card card"><div class="mood-intro"><p class="modal-kicker">Diário de emoções</p><h2>Como você está se sentindo hoje?</h2><p>Reserve um instante para perceber como você está.</p></div><div class="mood-picker" role="radiogroup" aria-label="Escolha seu humor"><label><input type="radio" name="mood" value="radiante"><span>🌞</span><strong>Radiante</strong></label><label><input type="radio" name="mood" value="bem"><span>🙂</span><strong>Bem</strong></label><label><input type="radio" name="mood" value="ok" checked><span>😐</span><strong>Ok</strong></label><label><input type="radio" name="mood" value="mal"><span>😔</span><strong>Mal</strong></label><label><input type="radio" name="mood" value="pes­sima"><span>😞</span><strong>Péssima</strong></label></div><label class="mood-note-label" for="moodNote">Quer registrar mais alguma coisa?</label><textarea id="moodNote" placeholder="Escreva o que vier à sua mente..."></textarea><div class="tag-row" aria-label="Palavras rápidas"><button type="button">Calma</button><button type="button">Cansada</button><button type="button">Focada</button><button type="button">Ansiosa</button><button type="button">Feliz</button></div><button class="save-mood" id="saveMood">Salvar registro</button><p class="mood-feedback" id="moodFeedback">Seu registro foi salvo.</p></section>
+      <section class="mood-calendar card"><div class="calendar-heading"><button id="previousMonth" aria-label="Mês anterior">‹</button><div><p class="modal-kicker">Seu histórico</p><h2 id="calendarTitle"></h2></div><button id="nextMonth" aria-label="Próximo mês">›</button></div><div class="weekdays"><span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div><div class="calendar-grid" id="moodCalendar"></div></section>
+    </div>
+    <section class="recent-moods card"><div class="section-title"><div><p class="modal-kicker">Memórias recentes</p><h2>Como você tem se sentido</h2></div><span id="moodTotal">0 registros</span></div><div id="moodHistory" class="mood-history"></div></section>
+  </main>
+</div>
+<script src="../js/auth.js"></script><script src="../js/humor.js"></script>
+</body>
+</html>
